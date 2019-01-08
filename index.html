@@ -1,3 +1,4 @@
+<!-- CSS Grid Tutorial #6 - ALIGNING & JUSTIFYING ITEMS -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,30 +16,35 @@
 			grid-gap: 10px;
 			max-width: 960px;
 			margin: 0 auto;
-			/*align-items: start;*/
-			/*justify-items: start;*/
+			/* APPLIES TO ENTIRE GRID: */
+			/* ALIGN = UP&DOWN, JUSTIFY = LEFT&RIGHT */
+			/* align-items: stretch; */ /* DEFAULT */
+			/* align-items: start; */
+			/* align-items: end; */
+			/* align-items: start; */
+			/* justify-items: end; */
 		}
 		#content div{
 			background: #3bbced;
 			padding: 30px;
-			/*justify-self: start;*/
-			/*align-self: start;*/
 		}
 		#content div:nth-child(even){
 			background: #777;
 			padding: 30px;
 		}
+
+		/* APPLIES TO INDIVIDUAL DIV's: */
 		.one{
-			align-self: end;
-			justify-self: start;
+			/* align-self: end; */
+			/* justify-self: start; */
 		}
 		.two{
-			align-self: center;
-			justify-self: center;
+			/* align-self: center; */
+			/* justify-self: center; */
 		}
 		.three{
-			align-self: start;
-			justify-self: end;
+			/* align-self: start; */
+			/* justify-self: end; */
 		}
 	</style>
 </head>
