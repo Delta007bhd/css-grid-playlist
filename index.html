@@ -1,72 +1,80 @@
-<!-- CSS Grid Tutorial #7 - CREATE A 12-COLUMN GRID -->
+<!-- CSS GRID TUTORIAL #7 - CREATE A 12-COLUMN GRID -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Using CSS Grid</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>12-column grid</title>
 	<style>
+
+		:root * {
+			margin: 0;
+			padding: 0;
+		}
+
 		body {
-			color: #fff;
-			font-family: 'Nunito Semibold';
+			background: white;
+			font-family: verdana, sans-serif;
 			text-align: center;
 		}
+
 		#content {
 			max-width: 960px;
 			margin: 0 auto;
 			display: grid;
-			grid-template-columns: repeat(12, 1fr); /* 12 col equal in width */
-			grid-auto-rows: minmax(100px, auto); /* row height min 100px and stretch auto to fit it's content */
-			grid-gap: 10px; /* 10px gap between columns and rows */
-			position: relative; /* because we need to place #grid as absolute */
-		}
-		#content > * { /* selects every element with #content as parent */
-			background: #3bbced;
+			grid: "header header header" minmax(50px, auto)
+						"aside main main" minmax(100px, auto)
+						"nav main main" minmax(100px, auto)
+						"section section section" minmax(100px, auto)
+						"section section section" minmax(100px, auto)
+						"footer footer footer" minmax(50px, auto)
+						/ 1fr 1fr 1fr;
+			grid-gap: 10px;
+			position: relative;
+			}
+
+		#content > * {
 			padding: 30px;
+			background: #3bbced;
 		}
 
-		/* CREATE LAYOUT FOR HTML5 SEMANTIC ELEMENTS (LAYER 1) */
 		header {
-			grid-column: 1 / 13;
-		}
-		main {
-			grid-column: 4 / 13;
-			grid-row: 2 / 4;
+			grid-area: header;
 		}
 		aside {
-			grid-column: 1 / 4;
+			grid-area: aside;
 		}
 		nav {
-			grid-column: 1 / 4;
+			grid-area: nav;
+		}
+		main {
+			grid-area: main;
 		}
 		section {
-			grid-column: 1 / 13;
-			grid-row: 4 / 6;
+			grid-area: section;
 		}
 		footer {
-			grid-column: 1 / 13;
+			grid-area: footer;
 		}
 
-		/* CREATE TRANSPARENT GRID OVERLAY (LAYER 2)*/
 		#grid {
-			position: absolute; /* removes grid from normal document flow if parent element #content is set to anything other than static */
-			display: grid; /* can leave this out since below we display: none; which overrides this property */
-			grid-template-columns: repeat(12, 1fr); /* 12 columns equal in width */
-			width: 100%; /* w + h set to maximum size of parent element #content */
+			position: absolute;
+			display: none;
+			grid-template-columns: repeat(3, 1fr);
+			grid-auto-rows: minmax(100%, auto);
+			width: 100%;
 			height: 100%;
-			padding: 0; /* otherwise it gets padding 30px from "#content > *" */
-			background: transparent; /* = opacity: 0; invisible, otherwise everything will be blue since #grid is on top of #content and measures the same */
-			display: none; /* initially set to invisible since it will be toggled on with the checkbox */
-		}
-		/* CREATE TRANSPARENT P TAGS (LAYER 3) */
-		#grid p {
-			background: black; /* Can also leave this out */
-			margin: 0; /* p elements get default margins */
-			opacity: 0.2;
-			border: 1px solid; /* border has no color so it's transparent */
+			padding: 0;
+			background: transparent;
 		}
 
-		/* CREATE CHECKBOX TO TOGGLE GRID OVERLAY ON/OFF */
-		/* when input element is checked ON, grab it's adjacent sibling (#content) element and style it's child element (#grid) as follows: */
-		input:checked + #content > #grid { /* can omit > as well */
+		#grid p {
+			border: 1px solid;
+			opacity: 0.3;
+		}
+
+		input:checked + #content #grid {
 			display: grid;
 		}
 
@@ -78,17 +86,16 @@
 
 	<div id="content">
 
-		<!-- CREATE GRID OVERLAY USING 12 TALL P TAGS -->
 		<div id="grid">
-			<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+			<p></p> <p></p> <p></p>
 		</div>
 
 		<header>Header</header>
-    <main>Main</main>
-    <section>Section</section>
-    <aside>Aside</aside>
-    <nav>Nav</nav>
-    <footer>Footer</footer>
+		<aside>Aside</aside>
+		<nav>Navigation</nav>
+		<main>Main Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, distinctio, itaque. Iure beatae et sit rerum a, consequuntur veniam, eum in nemo voluptatibus numquam. Nemo fugiat voluptate, inventore quisquam quidem, itaque sequi optio, voluptatem quam cupiditate porro, laudantium quia nulla qui repellat facere. Beatae adipisci, facere a iure laudantium excepturi vero nihil neque sint, mollitia accusantium voluptates quidem veniam illo. Ipsum nesciunt dolores illo accusamus optio quaerat dolorem? Praesentium similique accusantium, minus commodi mollitia minima debitis impedit nemo quasi, quia, voluptatem non iusto veniam iure ullam quisquam! Cupiditate nesciunt cum omnis laboriosam suscipit commodi dignissimos sed odio doloribus, pariatur temporibus cumque molestias, facere tempore mollitia fuga recusandae officia eum eligendi similique expedita molestiae laborum! Nesciunt vel, facilis excepturi nam eius laborum velit maxime quam sint quas, doloribus natus. Enim eligendi explicabo vero illum laudantium quasi, unde natus, consequuntur nostrum itaque fuga, possimus non minus debitis repudiandae? Eveniet accusamus assumenda cumque?</main>
+		<section>Section Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti ea ratione quis dignissimos laborum sed? Necessitatibus libero consequuntur exercitationem illum a. Optio odit, recusandae consequuntur sunt necessitatibus ea accusamus, tempore debitis doloremque sit labore earum dolores illo amet, quas quidem quaerat! </section>
+		<footer>Footer</footer>
 
 	</div>
 
