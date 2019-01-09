@@ -53,14 +53,14 @@
 			width: 100%; /* w + h set to maximum size of parent element #content */
 			height: 100%;
 			padding: 0; /* otherwise it gets padding 30px from "#content > *" */
-			background: transparent; /* = opacity: 0; invisible, otherwise everything will be blue since #grid is on top of #content and measures the same */
+			background: transparent; /* or set opacity: 0.2; and opacity applies also to child elements */
 			display: none; /* initially set to invisible since it will be toggled on with the checkbox */
 		}
 		/* CREATE TRANSPARENT P TAGS (LAYER 3) */
 		#grid p {
 			background: black; /* Can also leave this out */
 			margin: 0; /* p elements get default margins */
-			opacity: 0.2;
+			opacity: 0.2; /* or leave out if #grid has already been made opacity: 0.2; */
 			border: 1px solid; /* border has no color so it's transparent */
 		}
 
