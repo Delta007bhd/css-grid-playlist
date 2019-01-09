@@ -19,17 +19,20 @@
 			text-align: center;
 		}
 
+/* MOBILE FIRST DESIGN */
 		#content {
 			max-width: 960px;
 			margin: 0 auto;
 			display: grid;
-			grid: "header header header" minmax(50px, auto)
-						"aside main main" minmax(100px, auto)
-						"nav main main" minmax(100px, auto)
-						"section section section" minmax(100px, auto)
-						"section section section" minmax(100px, auto)
-						"footer footer footer" minmax(50px, auto)
-						/ 1fr 1fr 1fr;
+			/* grid shorthand method: */
+			grid: "header" minmax(50px, auto)
+						"nav" minmax(100px, auto)
+						"aside" minmax(100px, auto)
+						"main" minmax(100px, auto)
+						"section" minmax(100px, auto)
+						"section" minmax(100px, auto)
+						"footer" minmax(50px, auto)
+						/ 1fr;
 			grid-gap: 10px;
 			position: relative;
 			}
@@ -38,7 +41,7 @@
 			padding: 30px;
 			background: #3bbced;
 		}
-
+		/* assign grid area names: */
 		header {
 			grid-area: header;
 		}
@@ -76,6 +79,24 @@
 
 		input:checked + #content #grid {
 			display: grid;
+		}
+
+/* MEDIA QUERIES FOR DESKTOP */
+		@media screen and (min-width: 736px) {
+			#content {
+				max-width: 960px;
+				margin: 0 auto;
+				display: grid;
+				grid: "header header header" minmax(50px, auto)
+							"aside main main" minmax(100px, auto)
+							"nav main main" minmax(100px, auto)
+							"section section section" minmax(100px, auto)
+							"section section section" minmax(100px, auto)
+							"footer footer footer" minmax(50px, auto)
+							/ 1fr 1fr 1fr;
+				grid-gap: 10px;
+				position: relative;
+			}
 		}
 
 	</style>
